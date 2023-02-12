@@ -89,7 +89,8 @@ class Item(AbstractItem):
                         'unit_amount': self.price_eur}  # The unit amount in cents to be charged.
             self.price_usd_id = requests.post(STRIPE_URL+'/v1/prices', data=data_usd, headers=headers).json()['id']
             self.price_eur_id = requests.post(STRIPE_URL+'/v1/prices', data=data_eur, headers=headers).json()['id']
-        requests.post(STRIPE_URL + f'/v1/products/{self.stripe_id}', data={'default_price': self.price_usd_id}, headers=headers)
+        requests.post(STRIPE_URL + f'/v1/products/{self.stripe_id}', data={'default_price': self.price_usd_id},
+                      headers=headers)
         super().save(*args, **kwargs)
 
     def __str__(self):
