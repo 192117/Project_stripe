@@ -11,7 +11,8 @@ services:
     ports:
       - '8000:8000'
     command: >
-      bash -c " python stripe_project/manage.py makemigrations
+      bash -c " python manage.py collectstatic --noinput
+      && python stripe_project/manage.py makemigrations
       && python stripe_project/manage.py migrate
       && python stripe_project/manage.py runserver 0.0.0.0:8000"
     volumes:
