@@ -61,8 +61,8 @@ def buy_item(request, id, currency='usd'):
     else:
         data['amount'] = item.price_eur
     checkout_session = stripe.checkout.Session.create(
-        success_url='http://127.0.0.1:8000/success',
-        cancel_url='http://127.0.0.1:8000/cancel',
+        success_url='http://5.104.108.168:8000/success',
+        cancel_url='http://5.104.108.168:8000/cancel',
         line_items=[
             data,
         ],
@@ -100,8 +100,8 @@ def buy_order(request, id, currency='usd'):
             })
         discount = disc.stripe_eur_id
     checkout_session = stripe.checkout.Session.create(
-        success_url='http://127.0.0.1:8000/success',
-        cancel_url='http://127.0.0.1:8000/cancel',
+        success_url='http://5.104.108.168:8000/success',
+        cancel_url='http://5.104.108.168:8000/cancel',
         line_items=items,
         mode="payment",
         discounts=[{'coupon': discount},]
